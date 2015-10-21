@@ -16,7 +16,7 @@ class UserBehavior(TaskSet):
             'us%22:%22open%22%7D%7D,%7B%22not%22:%7B%22term%22:%7B%22deleted%22:true%7D%7D%' + \
             '7D%5D%7D%7D%7D,%22sort%22:%5B%7B%22order%22:%7B%22order%22:%22desc%22,%22missi' + \
             'ng%22:%22_last%22,%22unmapped_type%22:%22long%22%7D%7D%5D%7D'
-        self.client.get(url.format(blog=BLOG_ID))
+        self.client.get(url.format(blog=BLOG_ID), name="/posts")
 
     @task(1)
     def profile(self):
@@ -24,7 +24,7 @@ class UserBehavior(TaskSet):
             '%22:%5B%7B%22_updated%22:%7B%22order%22:%22desc%22%7D%7D%5D,%22query%22:%7B%22filt' + \
             'ered%22:%7B%22filter%22:%7B%22and%22:%5B%7B%22range%22:%7B%22_updated%22:%7B%22gt%' + \
             '22:%222015-10-15T15:12:18%2B00:00%22%7D%7D%7D%5D%7D%7D%7D%7D'
-        self.client.get(url.format(blog=BLOG_ID))
+        self.client.get(url.format(blog=BLOG_ID), name="/posts (updates)")
 
 
 def on_quitting():
